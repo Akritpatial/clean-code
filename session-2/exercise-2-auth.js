@@ -16,7 +16,7 @@
  */
 
 // Simulated database
-const db = {
+const db = {  
   users: [
     { name: 'john', email: 'john@example.com', pwd: 'password123!', age: 25, active: true, last_login: null },
     { name: 'jane', email: 'jane@example.com', pwd: 'secure456!', age: 22, active: true, last_login: null },
@@ -47,9 +47,9 @@ const db = {
 // MESSY FUNCTIONS TO REFACTOR
 // ==========================================
 
-function a(n, p, db) {
+function a(n, p, db) {                            //login , userName, userPassword, database
   if (n && p) {
-    let u = db.find(x => x.name === n);
+    let u = db.find(x => x.name === n);           //user found 
     if (u) {
       if (p === u.pwd) {
         if (u.active) {
@@ -70,7 +70,7 @@ function a(n, p, db) {
   }
 }
 
-function b(u) {
+function b(u) {                                    //details validation 
   if (u.email && u.email.includes('@')) {
     if (u.pwd && u.pwd.length >= 8) {
       if (u.age && u.age >= 18) {
@@ -81,7 +81,7 @@ function b(u) {
   return false;
 }
 
-function c(db, u) {
+function c(db, u) {                                //userregistration
   let x = db.find(x => x.name === u.name);
   if (x) {
     return { ok: false, msg: 'User exists' };
